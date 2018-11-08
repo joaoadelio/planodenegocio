@@ -1,0 +1,19 @@
+<%= form_for :process, url: @method do |form| %>
+  <%= form.hidden_field :user_id, value: current_user.id  %>
+  <% if @questions.blank? %>
+    <% @process.each do |c| %>
+      <div class="form-group">
+        <%= form.label c.question.description %>
+        <%= form.text_area "answer[#{c.id}]", value: c.answer, id: :answer, class: 'form-control' %>
+      </div>
+    <% end %>
+  <% else %>
+    <% @questions.each do |q| %>
+      <div class="form-group">
+        <%= form.label q.description %>
+        <%= form.text_area "question[#{q.id}]", id: :answer, class: 'form-control' %>
+      </div>
+    <% end %>
+  <% end %>
+  <%= form.submit "Salvar questionário", class: 'btn btn-block btn-success' %>
+<% end %>

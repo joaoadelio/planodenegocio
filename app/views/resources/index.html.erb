@@ -1,0 +1,24 @@
+<h1>Questionário sobre os Recursos necessários</h1>
+<hr>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Questão</th>
+      <th>Resposta</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @answers.each do |a| %>
+      <tr>
+        <td><%= a.question.description %></td>
+        <td><%= a.answer %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Editar', resources_edit_path, class: 'btn bt-sm btn-success' %>
+<%= link_to 'Excluir', resources_destroy_path, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn bt-sm btn-danger' %>
